@@ -1,11 +1,14 @@
 #!/bin/bash
 clean() {
 	for dir in day-*; do
-		echo "$dir"
 		if [ -d "$dir" ]; then
 			(
 				cd "$dir" || exit
-				cargo clean
+				if [ -d "target" ]; then
+
+					echo "Cleaning $dir"
+					cargo clean
+				fi
 			)
 		fi
 	done
